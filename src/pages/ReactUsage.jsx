@@ -41,6 +41,28 @@ export default Home;`}
           The <span className="font-mono text-blue-200">Home</span> component demonstrates how React is used to structure and render the main content of the portfolio.
         </p>
       </section>
+      <section className="mt-10">
+        <h2 className="text-xl font-bold mb-2 text-indigo-200">How to Use Docker and Push to Azure Container Registry</h2>
+        <ol className="list-decimal list-inside space-y-2 mb-4">
+          <li>
+            <span className="font-semibold text-blue-200">Build the Docker image:</span>
+            <pre className="bg-gray-800 rounded p-2 text-sm overflow-x-auto">docker build -t &lt;registry-name&gt;.azurecr.io/portfolio-app:latest .</pre>
+          </li>
+          <li>
+            <span className="font-semibold text-blue-200">Login to Azure Container Registry:</span>
+            <pre className="bg-gray-800 rounded p-2 text-sm overflow-x-auto">az acr login --name &lt;registry-name&gt;</pre>
+          </li>
+          <li>
+            <span className="font-semibold text-blue-200">Push the image to ACR:</span>
+            <pre className="bg-gray-800 rounded p-2 text-sm overflow-x-auto">docker push &lt;registry-name&gt;.azurecr.io/portfolio-app:latest</pre>
+          </li>
+          <li>
+            <span className="font-semibold text-blue-200">Deploy the image from ACR to Azure Container Instances:</span>
+            <pre className="bg-gray-800 rounded p-2 text-sm overflow-x-auto">az container create --resource-group &lt;resource-group&gt; --name portfolio-app --image &lt;registry-name&gt;.azurecr.io/portfolio-app:latest --ports 80 --dns-name-label &lt;unique-dns-name&gt; --os-type Linux --cpu 1 --memory 1.0</pre>
+          </li>
+        </ol>
+        <p className="text-sm text-gray-400">Note: Replace <span className="font-mono">&lt;registry-name&gt;</span>, <span className="font-mono">&lt;resource-group&gt;</span>, and <span className="font-mono">&lt;unique-dns-name&gt;</span> with your actual Azure resources. Do not share your credentials or secrets in code or documentation.</p>
+      </section>
     </div>
   </div>
 );
