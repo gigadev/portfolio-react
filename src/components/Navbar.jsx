@@ -7,6 +7,7 @@ const links = [
   { to: '/portfolio', label: 'Portfolio' },
   { to: '/skills', label: 'Skills' },
   { to: '/services', label: 'Services' },
+  { to: '/build-your-own', label: 'Build Your Own' },
   { to: '/about', label: 'About' },
 ];
 
@@ -21,7 +22,7 @@ const Navbar = () => {
           </span>
           <span className="font-extrabold text-lg tracking-tight hidden sm:inline">Scott Shepherd</span>
         </Link>
-        <ul className="hidden md:flex space-x-8 items-center text-lg font-semibold">
+        <ul className="hidden md:flex space-x-6 items-center text-base font-semibold">
           {links.map((l) => (
             <li key={l.to}><Link to={l.to} className="hover:text-blue-400 transition">{l.label}</Link></li>
           ))}
