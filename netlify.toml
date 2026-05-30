@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# SPA fallback: let React Router handle client-side routes
+# so refreshing /about or /portfolio doesn't 404.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
