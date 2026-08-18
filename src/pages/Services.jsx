@@ -79,12 +79,18 @@ const Services = () => {
               Connect on LinkedIn
             </a>
             <a
-              href="https://www.upwork.com/freelancers/gigadev?viewMode=1"
+              href="mailto:scott.shepherd@gigadev.net"
+              className="border border-white text-white font-semibold px-5 py-2 rounded-full hover:bg-white/10 transition"
+            >
+              Email scott.shepherd@gigadev.net
+            </a>
+            <a
+              href="/docs/Gigadev-Capabilities-One-Pager.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="border border-white text-white font-semibold px-5 py-2 rounded-full hover:bg-white/10 transition"
             >
-              Hire on Upwork
+              Download the One-Page Overview (PDF)
             </a>
           </div>
         </div>

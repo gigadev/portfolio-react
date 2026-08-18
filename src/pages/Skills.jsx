@@ -6,7 +6,7 @@ const groups = [
     title: 'Web',
     icon: Globe,
     color: 'text-blue-400',
-    items: ['Next.js', 'React', 'TypeScript', 'Laravel / PHP', 'Tailwind CSS', 'Vite'],
+    items: ['Next.js', 'React', 'TypeScript', 'Laravel / PHP', 'Tailwind CSS', 'Vite', 'Chrome extensions'],
   },
   {
     title: 'Data',
@@ -43,7 +43,7 @@ const groups = [
     title: 'Microsoft Stack',
     icon: Server,
     color: 'text-indigo-400',
-    items: ['.NET', 'Blazor', 'Entity Framework', 'SQL Server', 'Azure', 'Azure DevOps'],
+    items: ['.NET', 'Blazor', 'Entity Framework', 'SQL Server', 'Azure', 'Azure DevOps', 'Dynamics CRM'],
   },
 ];
 
