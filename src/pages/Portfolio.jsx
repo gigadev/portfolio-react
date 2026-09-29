@@ -11,11 +11,11 @@ const featuredProjects = [
     title: 'Ninja Prospecting CRM (Gigadev CRM Platform)',
     badge: 'In beta with first customer',
     status: 'production',
-    blurb: 'A multi-tenant CRM engine for a B2B lead-generation agency, configured per industry through pluggable "packs." Database-enforced row-level security, Gmail/Microsoft 365 email, two-way calendar sync, a public API, and a Chrome extension that captures LinkedIn relationships straight into the CRM.',
+    blurb: 'A multi-tenant CRM engine for a B2B lead-generation agency, configured per industry through pluggable "packs." Database-enforced row-level security, Gmail/Microsoft 365 email, two-way calendar sync, a meeting scheduler with public booking links, a public API, and a Chrome extension that captures LinkedIn relationships straight into the CRM.',
     challenge: 'Off-the-shelf CRMs didn’t fit a LinkedIn-centric prospecting workflow.',
-    result: 'First commit to customer beta in under 4 months, solo — ~209,000 lines of TypeScript, 165 API endpoints, 3,700+ automated tests.',
+    result: 'First commit to customer beta in under 4 months, solo. Today: ~288,000 lines of TypeScript, 203 API routes, 64 data models across 94 migrations, over 6,300 automated tests including 99 Playwright end-to-end specs, 61 ADRs.',
     tags: ['Next.js 15', 'TypeScript', 'Prisma', 'PostgreSQL/Supabase', 'Zod', 'Vercel'],
-    link: null,
+    links: [],
   },
   {
     title: 'NinjaCRM — AI Messaging Studio',
@@ -24,7 +24,7 @@ const featuredProjects = [
     blurb: 'An AI-powered, LinkedIn-native CRM for coaches, consultants, and outreach agencies. A Claude-AI engine drafts relationship-first outreach from the agency’s own methodology — layered prompts, chat-based refinement, and AI document-parsing onboarding. Multi-tenant workspaces with SSO, 2FA, and Stripe billing.',
     result: 'In production — and the same client came back and commissioned the full Ninja Prospecting CRM above.',
     tags: ['Laravel 12', 'PHP 8.4', 'Filament', 'Anthropic Claude API', 'PostgreSQL', 'Stripe'],
-    link: 'https://ninjacrm-staging.on-forge.com/app/login',
+    links: [{ label: 'View Site', href: 'https://ninjacrm-staging.on-forge.com/app/login' }],
   },
   {
     title: 'APS Inspections Platform',
@@ -34,7 +34,7 @@ const featuredProjects = [
     challenge: 'The client ran projects, pilots, and billing on spreadsheets.',
     result: 'The company’s entire inspection lifecycle now runs on one production platform with full audit tracking.',
     tags: ['.NET 8', 'Blazor', 'EF Core 8', 'SQL Server', 'Azure'],
-    link: 'https://aps.brightshiftops.com/',
+    links: [{ label: 'View Site', href: 'https://aps.brightshiftops.com/' }],
   },
   {
     title: 'Media Gallery',
@@ -42,7 +42,7 @@ const featuredProjects = [
     status: 'production',
     blurb: 'A family photo & video album platform: albums per family, drag-and-drop uploads, YouTube embeds, share links, comments, and server-side filtering, sorting, and paging — migrated from SQLite to Supabase Postgres.',
     tags: ['Python/Flask', 'SQLAlchemy', 'Bootstrap', 'Supabase/PostgreSQL'],
-    link: 'https://gallery.reinowned.com/',
+    links: [{ label: 'View Site', href: 'https://gallery.reinowned.com/' }],
   },
   {
     title: 'Vacation Rental Ops',
@@ -50,15 +50,30 @@ const featuredProjects = [
     status: 'development',
     blurb: 'Operational-readiness SaaS for short-term rental hosts. Syncs Airbnb, Vrbo & Booking.com calendars, turns every checkout into a tracked, photo-verified turnover, with offline mobile checklists and par-level inventory restock alerts.',
     tags: ['Next.js', 'TypeScript', 'Supabase/PostgreSQL', 'Drizzle ORM', 'Vercel'],
-    link: 'https://vacation-rental-ops.vercel.app/',
+    links: [{ label: 'View Site', href: 'https://vacation-rental-ops.vercel.app/' }],
   },
   {
-    title: 'Stormwater Inspection Platform',
+    title: 'Stormwater Inspection Platform (RAG + MCP + Kubernetes)',
     badge: 'Live prototype',
     status: 'prototype',
-    blurb: 'Offline-first PWA for municipal MS4 stormwater-compliance inspections: automated rain-event detection from hourly weather data, inspection deadline countdowns, role-based access with Postgres row-level security, and one-click annual compliance reports.',
-    tags: ['Next.js', 'Supabase', 'Serwist PWA', 'pg_cron'],
-    link: 'https://inspection-platform.vercel.app/',
+    blurb: "Offline-first PWA for municipal MS4 stormwater-compliance inspections, extended in August and September 2026 into a full AI-application showcase. 'Ask the Permit' answers questions from four public permit PDFs (228 pages, 255 embedded passages) with pgvector + HNSW retrieval on the existing Postgres and Claude generation under strict grounding, section citations, and an honest 'not addressed' refusal. inspection-mcp exposes the platform to Claude as an MCP server: 7 tools on a purpose-built agent API with bearer auth, server-side tenant mapping, and tiered rate limits, with the single write tool registered only behind an explicit flag. The same app is packaged with a multi-stage Docker build (2.48 GB builder to 91 MB image) and deployed to k3d and AKS from hand-written manifests with a 2-line diff between clusters. Ask the Permit requires a sign-in; demo access is on the way.",
+    challenge: "Inspectors needed permit answers in the field, and Claude needed a safe, read-mostly way into the platform's data.",
+    result: '15 golden questions at 100% retrieval, refusal, and groundedness (methodology caveats documented in the ADR); ~20 ms retrieval, ~$0.035 per question. The MCP write gate held under adversarial testing, and that testing surfaced a mislabelled field, three false negatives in the test suite, and two runbook errors before release. A rolling-update race that dropped one request per cutover was measured, fixed with a preStop hook, and re-verified at zero.',
+    tags: ['Next.js', 'Supabase', 'pgvector', 'Voyage embeddings', 'Claude API', 'MCP SDK', 'Serwist PWA', 'Docker', 'Kubernetes (k3d, AKS)'],
+    links: [
+      { label: 'View Site', href: 'https://inspection-platform.vercel.app/' },
+      { label: 'Ask the Permit', href: 'https://inspection-platform.vercel.app/stormwater/ask-permit' },
+    ],
+  },
+  {
+    title: 'Job Search Inventory',
+    badge: 'Live prototype',
+    status: 'prototype',
+    blurb: "Multi-tenant SaaS for running a job search: companies, jobs, contacts, interactions, documents, and follow-up reminders, with a 10-tool MCP server so Claude can query and update the pipeline directly, hybrid pgvector + full-text RAG with cited answers, LLM paste-to-ingest with a mandatory confirm step, a daily digest, and an installable PWA. Built to the CRM's tenancy pattern: every row carries a workspace id, Postgres RLS on every domain table, and no unscoped database client exported to request handlers.",
+    challenge: 'Track a real job search without a spreadsheet, and make the tracker something Claude can operate as a tool.',
+    result: 'Specified and built in one weekend by directing Claude Code against a written handoff: 12 models, 28 route handlers, 7 migrations, ~13,000 lines of TypeScript, tenancy integration test as the merge gate, Playwright golden-path suite. Deployed from GitHub Actions to Vercel after CI passes.',
+    tags: ['Next.js', 'TypeScript', 'Prisma', 'Supabase/PostgreSQL', 'pgvector', 'MCP SDK', 'Claude API', 'Serwist PWA', 'Vercel'],
+    links: [{ label: 'View Site', href: 'https://job-search-inventory.vercel.app/' }],
   },
   {
     title: 'Ward Status',
@@ -66,7 +81,7 @@ const featuredProjects = [
     status: 'prototype',
     blurb: 'Multi-tenant emergency check-in system for community groups — household safety, property damage, and utility tracking, with role-based access, audit logging, interactive maps, and printable reports.',
     tags: ['PHP 8', 'MySQL', 'Leaflet'],
-    link: 'https://property-assessment.reinowned.com/public/index.php?route=/login',
+    links: [{ label: 'View Site', href: 'https://property-assessment.reinowned.com/public/index.php?route=/login' }],
   },
   {
     title: 'HomeCache',
@@ -74,7 +89,7 @@ const featuredProjects = [
     status: 'prototype',
     blurb: 'An offline-first home-inventory PWA: barcode scanning, automatic grocery lists, and encrypted, password-protected backup. Fully usable with no connection, syncing to the cloud on demand.',
     tags: ['Next.js', 'PWA', 'Dexie/IndexedDB', 'Serwist', 'Prisma', 'PostgreSQL'],
-    link: 'https://offline.homecache.net/',
+    links: [{ label: 'View Site', href: 'https://offline.homecache.net/' }],
   },
   {
     title: 'MyTracker',
@@ -82,7 +97,7 @@ const featuredProjects = [
     status: 'prototype',
     blurb: 'An installable, offline-capable PWA and the reusable foundation — auth, outbox sync, offline shell, and multi-tenant data — that accelerates everything I build next.',
     tags: ['Next.js', 'TypeScript', 'Prisma', 'Dexie', 'Supabase'],
-    link: 'https://my-tracker-web.vercel.app/',
+    links: [{ label: 'View Site', href: 'https://my-tracker-web.vercel.app/' }],
   },
 ];
 
@@ -101,13 +116,14 @@ const Portfolio = () => {
       <div className="max-w-5xl mx-auto">
         <h1 className="text-4xl font-extrabold mb-2 text-blue-300">Portfolio</h1>
         <p className="text-blue-100 mb-10 max-w-2xl">
-          SaaS products and progressive web apps I&apos;ve designed and built end to end. Some are in
-          production with real users; others are live working prototypes&mdash;built to show what&apos;s
-          possible. If your business needs something similar, I can build it for you.
+          SaaS products and progressive web apps I have designed and built end to end. Eight shipped in
+          the last year: three are in production with real users and five are live working prototypes.
+          Older production work is included below. If your business needs something similar, I can
+          build it for you.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-          {featuredProjects.map((p, i) => (
-            <div key={i} className="bg-gray-900/70 border border-blue-800/40 rounded-xl p-6 shadow-lg flex flex-col">
+          {featuredProjects.map((p) => (
+            <div key={p.title} className="bg-gray-900/70 border border-blue-800/40 rounded-xl p-6 shadow-lg flex flex-col">
               <div className="flex items-start justify-between mb-2">
                 <h2 className="text-xl font-bold text-white">{p.title}</h2>
                 {p.badge && <span className={`ml-3 shrink-0 text-xs font-semibold px-3 py-1 rounded-full ${badgeStyles[p.status] || badgeStyles.prototype}`}>{p.badge}</span>}
@@ -122,7 +138,11 @@ const Portfolio = () => {
                 )}
               </div>
               <div className="flex flex-wrap">{p.tags.map((t) => <Tag key={t}>{t}</Tag>)}</div>
-              {p.link && <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline mt-3 text-sm font-semibold">View Site &rarr;</a>}
+              {p.links.length > 0 && (
+                <div className="flex flex-wrap gap-x-4">
+                  {p.links.map((l) => <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline mt-3 text-sm font-semibold">{l.label} &rarr;</a>)}
+                </div>
+              )}
             </div>
           ))}
         </div>
