@@ -4,8 +4,8 @@ import Logo from '../components/Logo';
 
 const stats = [
   { value: '25+', label: 'years of enterprise experience' },
-  { value: '7', label: 'apps shipped in the last year' },
-  { value: '3,700+', label: 'automated tests on the flagship CRM' },
+  { value: '8', label: 'apps shipped in the last year' },
+  { value: '6,300+', label: 'automated tests on the flagship CRM' },
   { value: '<4 mo', label: 'concept to customer beta' },
 ];
 
@@ -52,7 +52,7 @@ const Home = () => {
           <p className="mb-4">My delivery model pairs Claude AI coding agents with senior-architect oversight: the AI provides implementation speed, and 25+ years of judgment owns every design decision, code review, and test.</p>
           <ul className="list-disc list-inside space-y-2">
             <li><span className="font-semibold text-gray-100">Senior judgment on every line.</span> AI accelerates the typing; experience decides what gets built and verifies it's right.</li>
-            <li><span className="font-semibold text-gray-100">Weeks, not quarters.</span> Seven applications shipped in the last year&mdash;three in production, four live as working prototypes.</li>
+            <li><span className="font-semibold text-gray-100">Weeks, not quarters.</span> Eight applications shipped in the last year: three in production, five live as working prototypes.</li>
             <li><span className="font-semibold text-gray-100">Enterprise discipline by default.</span> Automated test suites, CI that blocks failures, documented architecture decisions, and security built in&mdash;OAuth, encrypted tokens, database-level tenant isolation, audit logging.</li>
             <li><span className="font-semibold text-gray-100">One accountable partner.</span> You work directly with the architect who writes, reviews, and stands behind the code&mdash;no hand-offs, no telephone game.</li>
           </ul>
@@ -60,7 +60,7 @@ const Home = () => {
 
         <h2 className="text-2xl font-bold mb-4 text-indigo-300">Currently Building</h2>
         <section className="mb-8">
-          <p>A multi-tenant CRM platform&mdash;now in beta with its first customer, a B2B lead-generation agency. Engineered to be configured and extended per industry through pluggable packs and plugins, so a business gets a CRM shaped around its real workflow instead of forcing its process into someone else's mold. First commit to customer beta in under 4 months.{' '}
+          <p>A multi-tenant CRM platform, now in beta with its first customer, a B2B lead-generation agency. Engineered to be configured and extended per industry through pluggable packs and plugins, so a business gets a CRM shaped around its real workflow instead of forcing its process into someone else's mold. First commit to customer beta in under 4 months. Alongside it: a stormwater inspection platform that now carries a grounded RAG assistant, an MCP server for Claude, and Kubernetes packaging and rollout.{' '}
             <Link to="/portfolio" className="text-blue-400 hover:underline">See the full portfolio &rarr;</Link>
           </p>
         </section>
