@@ -13,7 +13,7 @@ const featuredProjects = [
     status: 'production',
     blurb: 'A multi-tenant CRM engine for a B2B lead-generation agency, configured per industry through pluggable "packs." Database-enforced row-level security, Gmail/Microsoft 365 email, two-way calendar sync, a meeting scheduler with public booking links, a public API, and a Chrome extension that captures LinkedIn relationships straight into the CRM.',
     challenge: 'Off-the-shelf CRMs didn’t fit a LinkedIn-centric prospecting workflow.',
-    result: 'First commit to customer beta in under 4 months, solo. Today: ~288,000 lines of TypeScript, 203 API routes, 64 data models across 94 migrations, over 6,300 automated tests including 99 Playwright end-to-end specs, 61 ADRs.',
+    result: 'First commit to customer beta in under 4 months, solo. Today: ~300,000 lines of TypeScript, 208 API routes, 65 data models across 97 migrations, over 6,800 automated tests including 102 Playwright end-to-end specs, 61 ADRs.',
     tags: ['Next.js 15', 'TypeScript', 'Prisma', 'PostgreSQL/Supabase', 'Zod', 'Vercel'],
     links: [],
   },
@@ -46,11 +46,11 @@ const featuredProjects = [
   },
   {
     title: 'Vacation Rental Ops',
-    badge: 'In development',
-    status: 'development',
+    badge: 'Live prototype',
+    status: 'prototype',
     blurb: 'Operational-readiness SaaS for short-term rental hosts. Syncs Airbnb, Vrbo & Booking.com calendars, turns every checkout into a tracked, photo-verified turnover, with offline mobile checklists and par-level inventory restock alerts.',
     tags: ['Next.js', 'TypeScript', 'Supabase/PostgreSQL', 'Drizzle ORM', 'Vercel'],
-    links: [{ label: 'View Site', href: 'https://vacation-rental-ops.vercel.app/' }],
+    links: [{ label: 'View Site', href: 'https://vacation-rental-ops.vercel.app/dashboard' }],
   },
   {
     title: 'Stormwater Inspection Platform (RAG + MCP + Kubernetes)',
@@ -71,9 +71,19 @@ const featuredProjects = [
     status: 'prototype',
     blurb: "Multi-tenant SaaS for running a job search: companies, jobs, contacts, interactions, documents, and follow-up reminders, with a 10-tool MCP server so Claude can query and update the pipeline directly, hybrid pgvector + full-text RAG with cited answers, LLM paste-to-ingest with a mandatory confirm step, a daily digest, and an installable PWA. Built to the CRM's tenancy pattern: every row carries a workspace id, Postgres RLS on every domain table, and no unscoped database client exported to request handlers.",
     challenge: 'Track a real job search without a spreadsheet, and make the tracker something Claude can operate as a tool.',
-    result: 'Specified and built in one weekend by directing Claude Code against a written handoff: 12 models, 28 route handlers, 7 migrations, ~13,000 lines of TypeScript, tenancy integration test as the merge gate, Playwright golden-path suite. Deployed from GitHub Actions to Vercel after CI passes.',
+    result: 'Core app specified and built in one weekend by directing Claude Code against a written handoff, then refined with auto-save editing and on-device drafts: 12 models, 28 route handlers, 7 migrations, ~14,850 lines of TypeScript, 16 ADRs. 229 Vitest unit and integration tests (the tenancy test is the merge gate) and 48 Playwright end-to-end tests across 14 specs. Deployed from GitHub Actions to Vercel after CI passes, with migrations applied first and a post-deploy smoke check.',
     tags: ['Next.js', 'TypeScript', 'Prisma', 'Supabase/PostgreSQL', 'pgvector', 'MCP SDK', 'Claude API', 'Serwist PWA', 'Vercel'],
     links: [{ label: 'View Site', href: 'https://job-search-inventory.vercel.app/' }],
+  },
+  {
+    title: 'LevelWard',
+    badge: 'Live prototype',
+    status: 'prototype',
+    blurb: 'Skills learning management system: grade your skills, learn from the best source, prove it. Import a skill inventory (including a LinkedIn skills export), self-grade on a 0 to 4 scale, and compare against job packs to see the gaps. Claude generates outlines, tutorials, quizzes, and projects from ingested sources in background jobs, never while a user waits. Assessments lead to certificates with a public verify page and PDF export. Teams get invites, a skills heat-map, manager approval, and Stripe billing, and a 6-tool MCP server lets Claude read a learner\'s progress. One permission function in Postgres drives both the RLS policies and the Angular route guards, so the UI can never grant what the database refuses.',
+    challenge: 'Serve solo learners and employer teams on one data model without a separate code path for each.',
+    result: 'All six planned phases built: 48 tables across 14 migrations with RLS on every table, 12 Edge Functions, 31 ADRs, ~21,700 lines of TypeScript. 190 Vitest tests, 23 Deno tests, 261 pgTAP database assertions, and 16 Playwright end-to-end tests.',
+    tags: ['Angular 22', 'Signals', 'TypeScript', 'Supabase/PostgreSQL', 'pgvector', 'pgmq', 'Claude API', 'MCP SDK', 'Angular PWA'],
+    links: [],
   },
   {
     title: 'Ward Status',
@@ -116,10 +126,9 @@ const Portfolio = () => {
       <div className="max-w-5xl mx-auto">
         <h1 className="text-4xl font-extrabold mb-2 text-blue-300">Portfolio</h1>
         <p className="text-blue-100 mb-10 max-w-2xl">
-          SaaS products and progressive web apps I have designed and built end to end. Eight shipped in
-          the last year: three are in production with real users and five are live working prototypes.
-          Older production work is included below. If your business needs something similar, I can
-          build it for you.
+          SaaS products and progressive web apps I have designed and built end to end: three are in
+          production with real users, one is in beta with its first customer, and seven are live working
+          prototypes. If your business needs something similar, I can build it for you.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           {featuredProjects.map((p) => (
