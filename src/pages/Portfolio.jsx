@@ -79,11 +79,27 @@ const featuredProjects = [
     title: 'LevelWard',
     badge: 'Live prototype',
     status: 'prototype',
-    blurb: 'Skills learning management system: grade your skills, learn from the best source, prove it. Import a skill inventory (including a LinkedIn skills export), self-grade on a 0 to 4 scale, and compare against job packs to see the gaps. Claude generates outlines, tutorials, quizzes, and projects from ingested sources in background jobs, never while a user waits. Assessments lead to certificates with a public verify page and PDF export. Teams get invites, a skills heat-map, manager approval, and Stripe billing, and a 6-tool MCP server lets Claude read a learner\'s progress. One permission function in Postgres drives both the RLS policies and the Angular route guards, so the UI can never grant what the database refuses.',
+    blurb: "Skills learning management system: grade your skills, learn from the best source, prove it. Import a skill inventory (including a LinkedIn skills export), rate every skill on one rubric, and see the gap to a real job. Claude builds each tutorial from one licensed source, cited paragraph by paragraph, in background jobs that never make a user wait, and learners can ask follow-up questions of the tutorial itself. Quizzes, a final test, and a project lead to a certificate anyone can verify. Teams get invites, a skills heat-map, manager approval, employer-requested assessments, and team billing. A 21-tool MCP server lets Claude read a learner's progress and, with an admin key, author new courses. One permission function in Postgres drives both the RLS policies and the Angular route guards, so the UI can never grant what the database refuses.",
     challenge: 'Serve solo learners and employer teams on one data model without a separate code path for each.',
-    result: 'All six planned phases built: 48 tables across 14 migrations with RLS on every table, 12 Edge Functions, 31 ADRs, ~21,700 lines of TypeScript. 190 Vitest tests, 23 Deno tests, 261 pgTAP database assertions, and 16 Playwright end-to-end tests.',
-    tags: ['Angular 22', 'Signals', 'TypeScript', 'Supabase/PostgreSQL', 'pgvector', 'pgmq', 'Claude API', 'MCP SDK', 'Angular PWA'],
-    links: [],
+    result: 'Live on AWS within two weeks of the first commit: 49 tables across 20 migrations with RLS on every table, 13 Edge Functions, 44 ADRs, ~29,900 lines of TypeScript. 251 Vitest tests, 37 Deno tests, 372 pgTAP database assertions, and 24 Playwright end-to-end tests. Deployed with AWS CDK (S3 and CloudFront for the PWA, Lambda for the MCP server) from a GitHub Actions pipeline using OIDC.',
+    tags: ['Angular 22', 'Signals', 'TypeScript', 'Supabase/PostgreSQL', 'pgvector', 'Voyage embeddings', 'Claude API', 'MCP SDK', 'Angular PWA', 'AWS CDK'],
+    links: [
+      { label: 'Product Tour', href: 'https://levelward.app/tour' },
+      { label: 'About', href: 'https://levelward.app/about' },
+    ],
+  },
+  {
+    title: 'Cornerpin',
+    badge: 'Live prototype',
+    status: 'prototype',
+    blurb: 'Multi-tenant PWA for selling subdivision land lot by lot. Owners and developers draw lot boundaries on a map, set status and price, attach photos and documents, and print a QR yard sign for each lot. Buyers browse a public map colored by lot status, save lots, and send inquiries. A Claude outreach agent follows up with buyers, consent-first with quiet hours and opt-outs, and is checked in CI against replayed conversations. Leads flow to Slack and Salesforce, and a separate LightGBM service adds advisory, logged lead scores. Postgres + PostGIS with forced row-level security under non-owner roles, and a transactional outbox so no third-party or model call happens inside a request.',
+    challenge: 'Sell a subdivision lot by lot, with live status on a map and every buyer inquiry followed up.',
+    result: '~20,700 lines of Python and ~12,000 lines of TypeScript, 27 tables across 18 migrations, 74 REST routes plus a GraphQL read API, 48 ADRs. 251 pytest tests including cross-tenant RLS checks, 79 Vitest tests, and 43 Playwright end-to-end tests. Deployed by GitHub Actions and Terraform to Google Cloud Run behind Firebase Hosting.',
+    tags: ['Python 3.13', 'FastAPI', 'PostGIS', 'GraphQL', 'Next.js 16', 'TypeScript', 'MapLibre', 'Claude API', 'LightGBM', 'Serwist PWA', 'Google Cloud Run', 'Terraform'],
+    links: [
+      { label: 'Demo Subdivision', href: 'https://cornerpin.app/juniper-bench' },
+      { label: 'How It Is Built', href: 'https://cornerpin.app/about' },
+    ],
   },
   {
     title: 'Ward Status',
@@ -127,7 +143,7 @@ const Portfolio = () => {
         <h1 className="text-4xl font-extrabold mb-2 text-blue-300">Portfolio</h1>
         <p className="text-blue-100 mb-10 max-w-2xl">
           SaaS products and progressive web apps I have designed and built end to end: three are in
-          production with real users, one is in beta with its first customer, and seven are live working
+          production with real users, one is in beta with its first customer, and eight are live working
           prototypes. If your business needs something similar, I can build it for you.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
