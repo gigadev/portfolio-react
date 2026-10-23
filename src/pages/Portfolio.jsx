@@ -131,6 +131,9 @@ const earlierWork = [
   { title: 'Mortgage Calculator', blurb: 'A self-contained mortgage calculator built in PHP.', image: '/images/MortgageCalculator_2025-06-06 17-22-18.png', link: 'https://mortgage-calculator.reinowned.com/index.php', tags: ['PHP'] },
 ];
 
+// Set to true to show the View Site / demo links on every card again.
+const showSiteLinks = false;
+
 const Tag = ({ children }) => (
   <span className="inline-block bg-blue-900/60 text-blue-200 text-xs font-medium px-2.5 py-1 rounded-full mr-2 mb-2">{children}</span>
 );
@@ -163,7 +166,7 @@ const Portfolio = () => {
                 )}
               </div>
               <div className="flex flex-wrap">{p.tags.map((t) => <Tag key={t}>{t}</Tag>)}</div>
-              {p.links.length > 0 && (
+              {showSiteLinks && p.links.length > 0 && (
                 <div className="flex flex-wrap gap-x-4">
                   {p.links.map((l) => <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline mt-3 text-sm font-semibold">{l.label} &rarr;</a>)}
                 </div>
@@ -180,7 +183,7 @@ const Portfolio = () => {
                 <h3 className="text-lg font-semibold text-white">{p.title}</h3>
                 <p className="text-gray-400 text-sm mb-3">{p.blurb}</p>
                 <div className="flex flex-wrap mb-2">{p.tags.map((t) => <Tag key={t}>{t}</Tag>)}</div>
-                <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline text-sm font-semibold">View Site &rarr;</a>
+                {showSiteLinks && <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline text-sm font-semibold">View Site &rarr;</a>}
               </div>
             </div>
           ))}
